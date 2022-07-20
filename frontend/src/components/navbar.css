@@ -1,0 +1,32 @@
+#navbar {
+  background-color: #f0dda8;
+  border: 5px outset burlywood;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  margin-bottom: 4rem;
+  padding: 2rem 0;
+  width: auto;
+}
+
+#nav-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1.5rem;
+  margin-right: 5rem;
+}
+
+#nav-logo {
+  margin-left: 5rem;
+}
+
+@media screen and (max-width: 600px) {
+  #nav-logo {
+    margin-left: 1rem;
+  }
+
+  #nav-buttons {
+    margin-right: 1rem;
+  }
+}

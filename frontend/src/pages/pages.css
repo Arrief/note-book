@@ -1,0 +1,12 @@
+.buttonify {
+  background-color: var(--main-color);
+  border: none;
+  border-radius: .5rem;
+  color: whitesmoke;
+  padding: 1rem;
+  text-decoration: none;
+}
+
+.main-container {
+  margin: 0 5rem;
+}
