@@ -7,6 +7,14 @@
   text-decoration: none;
 }
 
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
 .main-container {
-  margin: 0 5rem;
+  margin: 3rem 20rem;
 }

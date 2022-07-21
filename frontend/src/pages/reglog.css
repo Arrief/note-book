@@ -1,0 +1,8 @@
+form {
+  background-image: url("https://t4.ftcdn.net/jpg/01/42/71/29/360_F_142712953_1XMycIzw6DswM6in91CnDYt3Ruk0c0QU.webp");
+  border: 2px solid var(--black-ink);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 1rem;
+}

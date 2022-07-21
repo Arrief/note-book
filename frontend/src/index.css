@@ -1,10 +1,13 @@
+:root {
+  --black-ink: #242321;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Edu SA Beginner', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 22px;
 }
 
 code {
@@ -14,4 +17,20 @@ code {
 
 .App {
   text-align: center;
+}
+
+.better-btn {
+  background-color: #f5f1d7; 
+  /* ede1ca */
+  border: 1px solid white;
+  border-radius: 1.5rem;
+  color: var(--black-ink);
+  font-weight: bold;
+  padding: 1rem;
+  width: 7rem;
+}
+
+.better-btn:hover {
+  background-color: #c9b999;
+  border: 1px solid var(--black-ink);
 }

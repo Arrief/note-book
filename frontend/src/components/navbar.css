@@ -1,5 +1,7 @@
 #navbar {
-  background-color: #f0dda8;
+  background-image: url("https://t4.ftcdn.net/jpg/01/42/71/29/360_F_142712953_1XMycIzw6DswM6in91CnDYt3Ruk0c0QU.webp");
+  /* background-color: #f0dda8; */
+  /* background: linear-gradient(90deg, rgba(240,221,168,1) 25%, rgba(222,184,135,1) 100%); */
   border: 5px outset burlywood;
   display: flex;
   align-items: center;
