@@ -17,6 +17,8 @@ const postRegister = (context, navigate) =>
     })
     .catch((error) => {
       console.error(error);
+      context.setUserData(context.emptyData);
+      navigate("/error");
     });
 
 export default postRegister;

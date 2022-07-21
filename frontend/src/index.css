@@ -3,6 +3,8 @@
 }
 
 body {
+  background-image: url("https://img.freepik.com/free-photo/flat-lay-desk-arrangement-with-copy-space_23-2148928165.jpg?w=2000");
+  background-repeat: no-repeat;
   margin: 0;
   font-family: 'Edu SA Beginner', cursive;
   -webkit-font-smoothing: antialiased;
@@ -20,11 +22,14 @@ code {
 }
 
 .better-btn {
-  background-color: #f5f1d7; 
-  /* ede1ca */
+  background-color: #ede1ca; 
+  /* f5f1d7 */
   border: 1px solid white;
   border-radius: 1.5rem;
   color: var(--black-ink);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
   padding: 1rem;
   width: 7rem;
@@ -33,4 +38,10 @@ code {
 .better-btn:hover {
   background-color: #c9b999;
   border: 1px solid var(--black-ink);
+}
+
+@media screen and (max-width: 600px) {
+  .better-btn {
+    width: 5rem;
+  }
 }

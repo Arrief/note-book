@@ -1,6 +1,7 @@
 const express = require("express");
 const {
   books_get,
+  books_post,
   login_post,
   register_post,
 } = require("../controllers/userController");
@@ -16,5 +17,7 @@ router.post("/user/register", register_post);
 router.post("/user/login", login_post);
 // path to get user data for profile after authenticating the JWT with middleware
 router.get("/user/books", authenticateUser, books_get);
+// path to insert a new book into the database
+router.post("/user/books", books_post);
 
 module.exports = router;

@@ -15,6 +15,7 @@ const postLogin = (context, navigate) =>
       // placing the JSON Web Token from backend into the local storage
       localStorage.setItem("token", response.data.token);
       context.setUserData({
+        userId: response.data.userId,
         userName: response.data.userName,
         email: "",
         password: "",

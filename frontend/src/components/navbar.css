@@ -1,5 +1,5 @@
 #navbar {
-  background-image: url("https://t4.ftcdn.net/jpg/01/42/71/29/360_F_142712953_1XMycIzw6DswM6in91CnDYt3Ruk0c0QU.webp");
+  background-image: url("../assets/paper-cream.png");
   /* background-color: #f0dda8; */
   /* background: linear-gradient(90deg, rgba(240,221,168,1) 25%, rgba(222,184,135,1) 100%); */
   border: 5px outset burlywood;
@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: space-between; 
   margin-bottom: 4rem;
-  padding: 2rem 0;
+  padding: 1rem 0;
   width: auto;
 }
 
@@ -20,15 +20,33 @@
 }
 
 #nav-logo {
-  margin-left: 5rem;
+  width: 20%;
 }
 
-@media screen and (max-width: 600px) {
+#nav-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-weight: bold;
+  font-size: 26px;
+  width: 20%;
+}
+
+@media screen and (max-width: 900px) {
   #nav-logo {
     margin-left: 1rem;
   }
 
   #nav-buttons {
     margin-right: 1rem;
+  }
+
+  #nav-title > p {
+    display: none;
+  }
+
+  #nav-logo {
+    width: 100%;
   }
 }

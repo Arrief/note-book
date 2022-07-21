@@ -3,6 +3,8 @@ form {
   border: 2px solid var(--black-ink);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 3rem;
   padding: 1rem;
 }

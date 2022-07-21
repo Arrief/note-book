@@ -13,7 +13,9 @@ const Landing = () => {
       {!context.token ? (
         <section className="main-container">
           <h1>Welcome to Note Book!</h1>
-          <h3>The best website</h3>
+          <h3>
+            All of your notes and quotations from your books, in one place.
+          </h3>
           <div className="btn-group">
             <button
               className="better-btn"

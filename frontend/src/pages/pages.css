@@ -16,5 +16,17 @@
 }
 
 .main-container {
+  background-image: url("../assets/paper-cream.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid var(--black-ink);
   margin: 3rem 20rem;
+  padding: 3rem;
+}
+
+@media screen and (max-width: 900px) {
+  .main-container {
+    margin: 3rem 4rem;
+    padding: 1rem;
+  }
 }

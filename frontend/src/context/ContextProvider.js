@@ -5,6 +5,7 @@ export const MyContext = React.createContext();
 const ContextProvider = (props) => {
   // empty template to reset userData state values
   const emptyData = {
+    userId: "",
     userName: "",
     email: "",
     password: "",
@@ -19,7 +20,18 @@ const ContextProvider = (props) => {
   // state for storing book collection of user
   const [myBooks, setMyBooks] = useState([]);
 
-  const [newBook, setNewBook] = useState({});
+  const [newBook, setNewBook] = useState({
+    title: "",
+    author: "",
+    category: "",
+  });
+
+  const handleBookDetails = (event, category) => {
+    setNewBook({
+      ...newBook,
+      [category]: event.currentTarget.value,
+    });
+  };
 
   // state for JWT after successful login
   const [token, setToken] = useState("");
@@ -44,6 +56,7 @@ const ContextProvider = (props) => {
         setMyBooks,
         newBook,
         setNewBook,
+        handleBookDetails,
         token,
         setToken,
         handleInput,

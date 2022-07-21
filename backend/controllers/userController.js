@@ -73,6 +73,7 @@ module.exports.login_post = (req, res) => {
         // send user data to frontend
         res.status(200).json({
           message: "Successfully logged in!",
+          userId: results[0].id,
           userName: results[0].username,
           token: generatedToken,
         });
@@ -86,14 +87,35 @@ module.exports.login_post = (req, res) => {
 // process to get user data after checking with middleware if user has a valid token
 module.exports.books_get = (req, res) => {
   // foundUser property comes from authUsers middleware in routes.js, contains result of SELECT * query for user
-  const user = {
-    userName: req.foundUser.username,
-    email: req.foundUser.email,
-    password: "",
-  };
+  const userId = req.foundUser.id;
   connection.query(
     "SELECT * FROM books WHERE users_id=?",
-    req.foundUser.id,
+    userId,
+    (err, result) => {
+      if (err) {
+        res.sendStatus(500);
+      } else if (!result) {
+        res.status(200).json({
+          books: [],
+        });
+      } else {
+        res.status(200).json({
+          books: result[0],
+        });
+      }
+    }
+  );
+};
+
+// process to insert a new book into the database
+module.exports.books_post = (req, res) => {
+  // foundUser property comes from authUsers middleware in routes.js, contains result of SELECT * query for user
+  const { title, author, category } = req.body.book;
+  const userId = req.body.userId;
+  connection.query(
+    "INSERT INTO books (title, author, category, users_id) VALUES (?, ?, ?, ?)",
+    [title, author, category, userId],
+
     (err, result) => {
       if (err) {
         res.sendStatus(500);
