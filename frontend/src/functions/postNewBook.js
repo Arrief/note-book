@@ -1,4 +1,5 @@
 import axios from "axios";
+import Alert from "@mui/material/Alert";
 
 // axios post request to backend books route
 const postNewBook = (context, navigate) =>
@@ -8,11 +9,13 @@ const postNewBook = (context, navigate) =>
     data: { book: context.newBook, userId: context.userData.userId },
   })
     .then((response) => {
-      if (response.status === 200) {
+      if (response.status === 201) {
         context.setNewBook({ title: "", author: "", category: "" });
+        // notification for the user
+        <Alert severity="success">
+          "You added a new book to your collection!
+        </Alert>;
       }
-      // redirect user to their profile
-      navigate("/my-books");
     })
     .catch((error) => {
       console.error(error);

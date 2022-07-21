@@ -19,7 +19,7 @@ const Register = () => {
     <>
       {!context.token ? (
         <form className="main-container" onSubmit={handleRegister}>
-          <label for="username">Username</label>
+          <label htmlFor="username">Username</label>
           <input
             type="text"
             id="username"
@@ -29,7 +29,7 @@ const Register = () => {
             onChange={(e) => context.handleInput(e, "userName")}
             required
           />
-          <label for="register-email">Email</label>
+          <label htmlFor="register-email">Email</label>
           <input
             type="email"
             id="register-email"
@@ -39,7 +39,7 @@ const Register = () => {
             onChange={(e) => context.handleInput(e, "email")}
             required
           />
-          <label for="register-password">Email</label>
+          <label htmlFor="register-password">Password</label>
           <input
             type="password"
             id="register-password"

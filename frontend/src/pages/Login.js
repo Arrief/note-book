@@ -19,7 +19,7 @@ const Login = () => {
     <>
       {!context.token ? (
         <form className="main-container" onSubmit={handleLogin}>
-          <label for="loginEmail">Email</label>
+          <label htmlFor="loginEmail">Email</label>
           <input
             type="email"
             id="login-email"
@@ -29,7 +29,7 @@ const Login = () => {
             onChange={(e) => context.handleInput(e, "email")}
             required
           />
-          <label for="login-password">Password</label>
+          <label htmlFor="login-password">Password</label>
           <input
             type="password"
             id="login-password"

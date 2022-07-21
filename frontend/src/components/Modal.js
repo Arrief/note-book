@@ -7,6 +7,7 @@ import { MyContext } from "../context/ContextProvider";
 import { useContext, useState } from "react";
 import postNewBook from "../functions/postNewBook";
 import bookCollection from "../assets/book-collection.jpeg";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   backgroundImage: `url(${bookCollection})`,
@@ -25,13 +26,14 @@ const style = {
 
 const AddBookModal = () => {
   const context = useContext(MyContext);
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const handleNewBook = (event) => {
     event.preventDefault();
-    postNewBook();
+    postNewBook(context, navigate);
   };
 
   return (

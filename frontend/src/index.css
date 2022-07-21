@@ -38,6 +38,7 @@ code {
 .better-btn:hover {
   background-color: #c9b999;
   border: 1px solid var(--black-ink);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {

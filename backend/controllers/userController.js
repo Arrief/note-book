@@ -99,9 +99,7 @@ module.exports.books_get = (req, res) => {
           books: [],
         });
       } else {
-        res.status(200).json({
-          books: result[0],
-        });
+        res.status(200).json(result);
       }
     }
   );
@@ -116,20 +114,13 @@ module.exports.books_post = (req, res) => {
     "INSERT INTO books (title, author, category, users_id) VALUES (?, ?, ?, ?)",
     [title, author, category, userId],
 
-    (err, result) => {
-      if (err) {
-        res.sendStatus(500);
-      } else if (!result) {
-        res.status(200).json({
-          user,
-          books: "",
-        });
-      } else {
-        res.status(200).json({
-          user,
-          books: result[0],
-        });
-      }
+    (err) => {
+      if (err)
+        res
+          .status(500)
+          .json({ message: "Failed to insert book into database", err });
+      // else:
+      res.status(201).send("New book added into the database.");
     }
   );
 };

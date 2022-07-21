@@ -33,6 +33,10 @@
   width: 20%;
 }
 
+#nav-title:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 900px) {
   #nav-logo {
     margin-left: 1rem;

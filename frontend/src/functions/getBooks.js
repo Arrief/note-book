@@ -13,6 +13,7 @@ const getBooks = (token, context, navigate) =>
       if (response.status === 200) {
         console.log(response.data);
         // destructuring userInfo object from backend to get all properties like firstName etc.
+        context.setMyBooks(response.data);
       }
     })
     .catch((error) => {

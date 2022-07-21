@@ -7,13 +7,8 @@ const Navbar = () => {
 
   return (
     <nav id="navbar">
-      <section id="nav-title">
-        <img
-          src={logo}
-          alt="Note Book logo"
-          id="nav-logo"
-          onClick={() => navigate("/")}
-        />
+      <section id="nav-title" onClick={() => navigate("/")}>
+        <img src={logo} alt="Note Book logo" id="nav-logo" />
         <p>Note Book</p>
       </section>
       <section id="nav-buttons">

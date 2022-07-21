@@ -7,7 +7,9 @@ const Bookshelf = () => {
   return (
     <ul>
       {context.myBooks.map((book, index) => (
-        <li key={index}>{book.title}</li>
+        <li key={index}>
+          {book.title} by {book.author}
+        </li>
       ))}
     </ul>
   );
