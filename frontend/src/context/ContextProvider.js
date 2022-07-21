@@ -13,8 +13,13 @@ const ContextProvider = (props) => {
   // state for storing user data during registration
   const [userData, setUserData] = useState(emptyData);
 
+  // checking if the book collection was successfully loaded from the backend
+  const [booksLoaded, setBooksLoaded] = useState(false);
+
   // state for storing book collection of user
-  const [myBooks, setMyBooks] = useState({});
+  const [myBooks, setMyBooks] = useState([]);
+
+  const [newBook, setNewBook] = useState({});
 
   // state for JWT after successful login
   const [token, setToken] = useState("");
@@ -33,8 +38,12 @@ const ContextProvider = (props) => {
         emptyData,
         userData,
         setUserData,
+        booksLoaded,
+        setBooksLoaded,
         myBooks,
         setMyBooks,
+        newBook,
+        setNewBook,
         token,
         setToken,
         handleInput,

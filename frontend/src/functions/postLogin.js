@@ -11,14 +11,21 @@ const postLogin = (context, navigate) =>
       if (response.status === 200) {
         context.setUserData(context.emptyData);
       }
-      console.log(response);
+      console.log(response.data);
       // placing the JSON Web Token from backend into the local storage
       localStorage.setItem("token", response.data.token);
+      context.setUserData({
+        userName: response.data.userName,
+        email: "",
+        password: "",
+      });
       // redirect user to their profile
-      navigate("/profile");
+      navigate("/my-books");
     })
     .catch((error) => {
       console.error(error);
+      context.setUserData(context.emptyData);
+      navigate("/error");
     });
 
 export default postLogin;
