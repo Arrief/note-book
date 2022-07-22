@@ -10,7 +10,7 @@ connection.connect((err) => {
   console.log("Successfully connected to the database.");
 });
 
-// process to get user data after checking with middleware if user has a valid token
+// process to get all books for specific user
 module.exports.books_get = (req, res) => {
   // foundUser property comes from authUsers middleware in routes.js, contains result of SELECT * query for user
   const userId = req.foundUser.id;
@@ -19,11 +19,11 @@ module.exports.books_get = (req, res) => {
     userId,
     (err, result) => {
       if (err) {
-        res.sendStatus(500);
+        res
+          .status(500)
+          .json({ message: "Error retrieving list of books.", err });
       } else if (!result) {
-        res.status(200).json({
-          books: [],
-        });
+        res.status(200).json([]);
       } else {
         res.status(200).json(result);
       }
@@ -68,20 +68,19 @@ module.exports.notes_post = (req, res) => {
   );
 };
 
-// process to get notes for one specific book
+// process to get all notes for one specific book
 module.exports.notes_get = (req, res) => {
-  // foundUser property comes from authUsers middleware in routes.js, contains result of SELECT * query for user
   const bookId = req.params.id;
   connection.query(
-    "SELECT * FROM notes AS WHERE books_id=?",
+    "SELECT * FROM notes WHERE books_id=?",
     bookId,
     (err, result) => {
       if (err) {
-        res.sendStatus(500);
+        res
+          .status(500)
+          .json({ message: "Error retrieving notes for this book.", err });
       } else if (!result) {
-        res.status(200).json({
-          notes: [],
-        });
+        res.status(200).json([]);
       } else {
         res.status(200).json(result);
       }

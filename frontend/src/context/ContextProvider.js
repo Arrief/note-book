@@ -20,6 +20,7 @@ const ContextProvider = (props) => {
   // state for storing book collection of user
   const [myBooks, setMyBooks] = useState([]);
 
+  // state for storing the properties of a new book the user wants to submit
   const [newBook, setNewBook] = useState({
     title: "",
     author: "",
@@ -33,6 +34,10 @@ const ContextProvider = (props) => {
     });
   };
 
+  // checking if the book collection was successfully loaded from the backend
+  const [notesLoaded, setNotesLoaded] = useState(false);
+
+  // state for storing the properties of a new note the user wants to submit
   const [noteDetails, setNoteDetails] = useState({
     content: "",
     page: "",
@@ -42,10 +47,13 @@ const ContextProvider = (props) => {
 
   const handleNoteDetails = (event, category) => {
     setNoteDetails({
-      ...newBook,
+      ...noteDetails,
       [category]: event.currentTarget.value,
     });
   };
+
+  // state for storing all notes & quotes for a particular book
+  const [myNotes, setMyNotes] = useState([]);
 
   // state for JWT after successful login
   const [token, setToken] = useState("");
@@ -74,9 +82,13 @@ const ContextProvider = (props) => {
         newBook,
         setNewBook,
         handleBookData,
+        notesLoaded,
+        setNotesLoaded,
         noteDetails,
         setNoteDetails,
         handleNoteDetails,
+        myNotes,
+        setMyNotes,
         token,
         setToken,
         reload,

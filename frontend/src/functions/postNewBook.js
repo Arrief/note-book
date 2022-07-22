@@ -1,7 +1,7 @@
 import axios from "axios";
 import Alert from "@mui/material/Alert";
 
-// axios post request to backend books route
+// axios post request to insert a new book into the database
 const postNewBook = (context, navigate) =>
   axios({
     method: "post",

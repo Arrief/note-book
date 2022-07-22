@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// axios get request to backend books route
+// axios get request to backend books route to get a list of all of the user's books
 const getBooks = (token, context, navigate) =>
   axios({
     url: "http://localhost:5000/user/books",
@@ -11,8 +11,6 @@ const getBooks = (token, context, navigate) =>
     .then((response) => {
       console.log(response);
       if (response.status === 200) {
-        console.log(response.data);
-        // destructuring userInfo object from backend to get all properties like firstName etc.
         context.setMyBooks(response.data);
       }
     })

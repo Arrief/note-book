@@ -25,3 +25,11 @@
     padding: 1rem;
   }
 }
+
+.note {
+  background-image: url("../assets/paper-white.jpg");
+  border: 1px solid var(--black-ink);
+  padding: 1rem;
+  text-align: left;
+  margin: 1rem 0;
+}

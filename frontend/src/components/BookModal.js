@@ -33,8 +33,8 @@ const AddBookModal = () => {
 
   const handleNewBook = async (event) => {
     event.preventDefault();
-    const postedBook = await postNewBook(context, navigate);
-    if (postedBook) context.setReload(!context.reload);
+    postNewBook(context, navigate);
+    context.setReload(!context.reload);
   };
 
   return (

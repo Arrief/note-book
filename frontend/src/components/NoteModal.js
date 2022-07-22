@@ -36,8 +36,8 @@ const AddNoteModal = (props) => {
 
   const handleNewNote = async (event) => {
     event.preventDefault();
-    const postedNote = await postNote(context, navigate, props.bookId);
-    if (postedNote) context.setReload(!context.reload);
+    postNote(context, navigate, props.bookId);
+    context.setReload(!context.reload);
   };
 
   return (
@@ -63,7 +63,7 @@ const AddNoteModal = (props) => {
                 placeholder="Start typing!"
                 id="textarea-note"
                 name="textarea-note"
-                value={context.bookDetails.content}
+                value={context.noteDetails.content}
                 onChange={(e) => context.handleNoteDetails(e, "content")}
                 required
               />
@@ -72,7 +72,7 @@ const AddNoteModal = (props) => {
                 placeholder="Page"
                 id="page"
                 name="page"
-                value={context.bookDetails.page}
+                value={context.noteDetails.page}
                 onChange={(e) => context.handleNoteDetails(e, "page")}
               />
               <input
@@ -80,7 +80,7 @@ const AddNoteModal = (props) => {
                 placeholder="Link"
                 id="link"
                 name="link"
-                value={context.bookDetails.link}
+                value={context.noteDetails.link}
                 onChange={(e) => context.handleNoteDetails(e, "link")}
               />
               <input
@@ -88,10 +88,10 @@ const AddNoteModal = (props) => {
                 placeholder="Note or quote?"
                 id="type"
                 name="type"
-                value={context.bookDetails.type}
+                value={context.noteDetails.type}
                 onChange={(e) => context.handleNoteDetails(e, "type")}
               />
-              <button>Submit book</button>
+              <button>Submit note</button>
             </form>
           </Box>
         </Fade>

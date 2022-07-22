@@ -1,18 +1,14 @@
 import axios from "axios";
 import Alert from "@mui/material/Alert";
 
+// axios post request to insert a new note into the database
 const postNote = (context, navigate, bookId) =>
   axios({
     method: "post",
     url: "http://localhost:5000/user/books/notes",
     data: {
       bookId,
-      newNote: {
-        content: context.noteDetails.content,
-        page: context.noteDetails.page,
-        link: context.noteDetails.link,
-        type: context.noteDetails.type,
-      },
+      newNote: context.noteDetails,
     },
   })
     .then((response) => {
