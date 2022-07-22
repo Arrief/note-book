@@ -8,6 +8,13 @@ const Navbar = () => {
   const navigate = useNavigate();
   const context = useContext(MyContext);
 
+  // function for logging user out
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    context.setUserData(context.emptyData);
+    navigate("/login");
+  };
+
   return (
     <nav id="navbar">
       <section id="nav-title" onClick={() => navigate("/")}>
@@ -30,7 +37,9 @@ const Navbar = () => {
         ) : (
           <>
             <p>Hi, {context.userData.userName}!</p>{" "}
-            <button className="better-btn">Logout</button>
+            <button className="better-btn" onClick={handleLogout}>
+              Logout
+            </button>
           </>
         )}
       </section>
