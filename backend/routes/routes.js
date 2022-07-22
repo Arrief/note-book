@@ -24,6 +24,6 @@ router.post("/user/books", books_post);
 // path to get data and notes for one specific book
 router.get("/user/books/:id", notes_get);
 // path to insert a new note/quote into the database
-router.post("user/books/notes", notes_post);
+router.post("/user/books/notes", notes_post);
 
 module.exports = router;

@@ -16,7 +16,7 @@ const postNote = (context, navigate, bookId) =>
         context.setNoteDetails({ content: "", page: "", link: "", type: "" });
         // notification for the user
         <Alert onClose={() => {}} severity="success">
-          "You added a new note for this book!
+          {alert("You added a new note for this book!")}
         </Alert>;
       }
     })

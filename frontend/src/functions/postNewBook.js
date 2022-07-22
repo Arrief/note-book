@@ -12,8 +12,9 @@ const postNewBook = (context, navigate) =>
       if (response.status === 201) {
         context.setNewBook({ title: "", author: "", category: "" });
         // notification for the user
+
         <Alert onClose={() => {}} severity="success">
-          "You added a new book to your collection!
+          {alert("You added a new book to your collection!")}
         </Alert>;
       }
     })
