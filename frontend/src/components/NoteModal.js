@@ -1,0 +1,103 @@
+import Backdrop from "@mui/material/Backdrop";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
+import "./bookshelf.css";
+import { MyContext } from "../context/ContextProvider";
+import { useContext, useState } from "react";
+import notes from "../assets/notes.jpeg";
+import { useNavigate } from "react-router-dom";
+import postNote from "../functions/postNote";
+
+const style = {
+  backgroundImage: `url(${notes})`,
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center",
+  backgroundSize: "cover",
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  transform: "translate(-50%, -50%)",
+  width: { xs: "10rem", md: "40rem" },
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 10,
+};
+
+const AddNoteModal = (props) => {
+  const context = useContext(MyContext);
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const handleNewNote = async (event) => {
+    event.preventDefault();
+    const postedNote = await postNote(context, navigate, props.bookId);
+    if (postedNote) context.setReload(!context.reload);
+  };
+
+  return (
+    <div>
+      <button onClick={handleOpen} className="add-btn">
+        Take a note
+      </button>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <Box sx={style}>
+            <form className="new-book" onSubmit={handleNewNote}>
+              <textarea
+                placeholder="Start typing!"
+                id="textarea-note"
+                name="textarea-note"
+                value={context.bookDetails.content}
+                onChange={(e) => context.handleNoteDetails(e, "content")}
+                required
+              />
+              <input
+                type="number"
+                placeholder="Page"
+                id="page"
+                name="page"
+                value={context.bookDetails.page}
+                onChange={(e) => context.handleNoteDetails(e, "page")}
+              />
+              <input
+                type="text"
+                placeholder="Link"
+                id="link"
+                name="link"
+                value={context.bookDetails.link}
+                onChange={(e) => context.handleNoteDetails(e, "link")}
+              />
+              <input
+                type="text"
+                placeholder="Note or quote?"
+                id="type"
+                name="type"
+                value={context.bookDetails.type}
+                onChange={(e) => context.handleNoteDetails(e, "type")}
+              />
+              <button>Submit book</button>
+            </form>
+          </Box>
+        </Fade>
+      </Modal>
+    </div>
+  );
+};
+
+export default AddNoteModal;

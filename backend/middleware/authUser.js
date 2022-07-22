@@ -11,7 +11,6 @@ const authenticateUser = (req, res, next) => {
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) return res.sendStatus(403);
     // else:
-    console.log(user);
     req.foundUser = user;
     next();
   });

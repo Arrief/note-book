@@ -1,5 +1,91 @@
+#textarea-note {
+  width: 31rem;
+  height: 20rem;
+}
+
 .new-book {
-  background-color: white;
+  border: none;
+  background: none;
   opacity: .5;
   width: 80%;
+}
+
+.add-btn {
+  margin-top: 2rem;
+    background-color: #29ac4a; 
+  /* f5f1d7 */
+  border: 1px solid white;
+  border-radius: 1.5rem;
+  color: var(--black-ink);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  padding: 1rem;
+  width: 7rem;
+}
+
+.add-btn:hover {
+  background-color: #199219;
+  border: 1px solid var(--black-ink);
+  cursor: pointer;
+}
+
+.book {
+  background-image: url("../assets/book-background.jpg");
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 140px;
+  height: 12rem;
+  padding: 2rem;
+}
+
+.book > p {
+  align-self: stretch;
+}
+
+.book-btn {
+  background-color: #f3d79f; 
+  /* f5f1d7 */
+  border: 1px solid white;
+  border-radius: 1.5rem;
+  color: var(--black-ink);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  padding: .5rem;
+  width: 4rem;
+}
+
+.book-btn:hover {
+  background-color: #eec85e;
+  border: 1px solid var(--black-ink);
+  cursor: pointer;
+}
+
+.bookshelf {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+.book-label {
+  background-image: url("../assets/paper-white.jpg");
+  height: 70%;
+}
+
+@media screen and (max-width: 900px) {
+  #textarea-note {
+    width: 18rem;
+  }
+
+  .bookshelf {
+    display: flex;
+    flex-direction: column;
+  }
 }

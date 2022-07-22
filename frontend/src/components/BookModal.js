@@ -31,14 +31,17 @@ const AddBookModal = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleNewBook = (event) => {
+  const handleNewBook = async (event) => {
     event.preventDefault();
-    postNewBook(context, navigate);
+    const postedBook = await postNewBook(context, navigate);
+    if (postedBook) context.setReload(!context.reload);
   };
 
   return (
     <div>
-      <button onClick={handleOpen}>Add a book!</button>
+      <button onClick={handleOpen} className="add-btn">
+        Add a book!
+      </button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -59,7 +62,7 @@ const AddBookModal = () => {
                 id="title"
                 name="title"
                 value={context.newBook.title}
-                onChange={(e) => context.handleBookDetails(e, "title")}
+                onChange={(e) => context.handleBookData(e, "title")}
                 required
               />
               <input
@@ -68,7 +71,7 @@ const AddBookModal = () => {
                 id="author"
                 name="author"
                 value={context.newBook.author}
-                onChange={(e) => context.handleBookDetails(e, "author")}
+                onChange={(e) => context.handleBookData(e, "author")}
                 required
               />
               <input
@@ -77,7 +80,7 @@ const AddBookModal = () => {
                 id="category"
                 name="category"
                 value={context.newBook.category}
-                onChange={(e) => context.handleBookDetails(e, "category")}
+                onChange={(e) => context.handleBookData(e, "category")}
               />
               <button>Submit book</button>
             </form>

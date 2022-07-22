@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { MyContext } from "../context/ContextProvider";
 import "./navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const context = useContext(MyContext);
 
   return (
     <nav id="navbar">
@@ -12,12 +15,24 @@ const Navbar = () => {
         <p>Note Book</p>
       </section>
       <section id="nav-buttons">
-        <button className="better-btn" onClick={() => navigate("/register")}>
-          Register
-        </button>
-        <button className="better-btn" onClick={() => navigate("/login")}>
-          Login
-        </button>
+        {!context.userData.userId ? (
+          <>
+            <button
+              className="better-btn"
+              onClick={() => navigate("/register")}
+            >
+              Register
+            </button>
+            <button className="better-btn" onClick={() => navigate("/login")}>
+              Login
+            </button>{" "}
+          </>
+        ) : (
+          <>
+            <p>Hi, {context.userData.userName}!</p>{" "}
+            <button className="better-btn">Logout</button>
+          </>
+        )}
       </section>
     </nav>
   );

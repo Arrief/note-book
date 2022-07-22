@@ -26,8 +26,22 @@ const ContextProvider = (props) => {
     category: "",
   });
 
-  const handleBookDetails = (event, category) => {
+  const handleBookData = (event, category) => {
     setNewBook({
+      ...newBook,
+      [category]: event.currentTarget.value,
+    });
+  };
+
+  const [noteDetails, setNoteDetails] = useState({
+    content: "",
+    page: "",
+    link: "",
+    type: "",
+  });
+
+  const handleNoteDetails = (event, category) => {
+    setNoteDetails({
       ...newBook,
       [category]: event.currentTarget.value,
     });
@@ -35,6 +49,9 @@ const ContextProvider = (props) => {
 
   // state for JWT after successful login
   const [token, setToken] = useState("");
+
+  // state to trigger useEffect after updating the database
+  const [reload, setReload] = useState(false);
 
   // function to assign the user data from input fields to userData's properties
   const handleInput = (event, category) => {
@@ -56,9 +73,14 @@ const ContextProvider = (props) => {
         setMyBooks,
         newBook,
         setNewBook,
-        handleBookDetails,
+        handleBookData,
+        noteDetails,
+        setNoteDetails,
+        handleNoteDetails,
         token,
         setToken,
+        reload,
+        setReload,
         handleInput,
       }}
     >

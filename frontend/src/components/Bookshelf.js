@@ -1,17 +1,29 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { MyContext } from "../context/ContextProvider";
 
 const Bookshelf = () => {
   const context = useContext(MyContext);
+  const navigate = useNavigate();
 
   return (
-    <ul>
+    <section className="bookshelf">
       {context.myBooks.map((book, index) => (
-        <li key={index}>
-          {book.title} by {book.author}
-        </li>
+        <div className="book" key={index}>
+          <p className="book-label">
+            <span style={{ fontWeight: "bold" }}>{book.title}</span> <br />
+            by <br />
+            {book.author}
+          </p>
+          <button
+            className="book-btn"
+            onClick={() => navigate(`/my-books/${book.id}`)}
+          >
+            Details
+          </button>
+        </div>
       ))}
-    </ul>
+    </section>
   );
 };
 
