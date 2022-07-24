@@ -1,20 +1,35 @@
 # Note Book
 
-## Description
+## Introduction
 
-Note Book is a web application for taking keeping notes and quotes from your favorite books, online and all in one place.
+_Note Book_ is a web application for those who like to read a lot and take a lot of notes. Instead of having to skim through the pages of notepads or the books themselves to find that one quotation that you marked _somewhere_, Note Book allows you to add all your book to a digital collection, take as many notes and quotes for each book as you like and keeping them all in one place.
+_A filter function will be implemented soon!_
 
 ## Features
 
+- Sign up for a free user account
+- Add all your book to your personal digital collection
+- Access all notes & quotations you took for each book
+- _Soon: a filter option for categories and keywords to control which notes are displayed_
+
 ## Installation
+
+After cloning this repository from Github, use the terminal to cd into the cloned parent folder, then run `npm install` inside **both** the /frontend and /backend folders.
+
+Create a new MySQL database and import the **note-book.sql** file (or copy & paste its content into the new database manually) in order to have the required tables.
+
+In the /backend folder, rename the **.env.sample** file to just **.env** and replace the placeholder values inside with your actual MySQL data and credentials.
+
+Lastly, run `npm start`, again in both the /frontend and /backend folders and keep both terminal tabs/windows open and running all the time.
 
 ## Created with
 
 - React v18.2.0
 - JavaScript
-- HTML & CSS
 - Node & Express
 - MySQL
+- HTML & CSS
+- MUI
 
 ## Image sources
 
