@@ -1,28 +1,38 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../context/ContextProvider";
+import SearchField from "./SearchField";
 
 const Bookshelf = () => {
   const context = useContext(MyContext);
   const navigate = useNavigate();
+  const [searchValue, setSearchValue] = useState("");
 
   return (
     <section className="bookshelf">
-      {context.myBooks.map((book, index) => (
-        <div className="book" key={index}>
-          <p className="book-label">
-            <span style={{ fontWeight: "bold" }}>{book.title}</span> <br />
-            by <br />
-            {book.author}
-          </p>
-          <button
-            className="book-btn"
-            onClick={() => navigate(`/my-books/${book.id}`)}
-          >
-            Details
-          </button>
-        </div>
-      ))}
+      <SearchField
+        action={(event) => setSearchValue(event.target.value)}
+        value={searchValue}
+      />
+      {context.myBooks.map(
+        (book, index) =>
+          // filter display according to user search, if any
+          book.includes(searchValue.toLowerCase()) && (
+            <div className="book" key={index}>
+              <p className="book-label">
+                <span style={{ fontWeight: "bold" }}>{book.title}</span> <br />
+                by <br />
+                {book.author}
+              </p>
+              <button
+                className="book-btn"
+                onClick={() => navigate(`/my-books/${book.id}`)}
+              >
+                Details
+              </button>
+            </div>
+          )
+      )}
     </section>
   );
 };

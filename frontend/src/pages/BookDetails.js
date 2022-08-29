@@ -1,11 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { MyContext } from "../context/ContextProvider";
 import getNotes from "../functions/getNotes";
 import "./pages.css";
 import "../components/bookshelf.css";
 import AddNoteModal from "../components/NoteModal";
-import SearchField from "../components/SerachField";
+import SearchField from "../components/SearchField";
 
 const BookDetails = () => {
   const context = useContext(MyContext);
@@ -15,6 +15,8 @@ const BookDetails = () => {
   also: id from params is a String, needs to be converted into number */
   const myBook = context.myBooks.filter((book) => book.id === Number(id))[0];
 
+  const [searchValue, setSearchValue] = useState("");
+
   useEffect(() => {
     getNotes(context, navigate, id);
     context.setNotesLoaded(true);
@@ -22,7 +24,10 @@ const BookDetails = () => {
 
   return (
     <section className="main-container">
-      <SearchField />
+      <SearchField
+        action={(event) => setSearchValue(event.target.value)}
+        value={searchValue}
+      />
       <p>
         <span style={{ fontSize: "24px", fontWeight: "bold" }}>
           {myBook.title}
