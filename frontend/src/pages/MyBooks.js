@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import getBooks from "../functions/getBooks";
 import Bookshelf from "../components/Bookshelf";
 import AddBookModal from "../components/BookModal";
+import SearchField from "../components/SerachField";
 
 const MyBooks = () => {
   const context = useContext(MyContext);
@@ -21,6 +22,7 @@ const MyBooks = () => {
   return (
     <section className="main-container">
       <>
+        <SearchField />
         {context.booksLoaded ? (
           <>
             <h1>{userName}'s bookshelf:</h1>

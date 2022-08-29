@@ -5,6 +5,7 @@ import getNotes from "../functions/getNotes";
 import "./pages.css";
 import "../components/bookshelf.css";
 import AddNoteModal from "../components/NoteModal";
+import SearchField from "../components/SerachField";
 
 const BookDetails = () => {
   const context = useContext(MyContext);
@@ -21,6 +22,7 @@ const BookDetails = () => {
 
   return (
     <section className="main-container">
+      <SearchField />
       <p>
         <span style={{ fontSize: "24px", fontWeight: "bold" }}>
           {myBook.title}
