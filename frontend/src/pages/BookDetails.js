@@ -6,6 +6,7 @@ import "./pages.css";
 import "../components/bookshelf.css";
 import AddNoteModal from "../components/NoteModal";
 import SearchField from "../components/SearchField";
+import FilterDisplay from "../components/FilterDisplay";
 
 const BookDetails = () => {
   const context = useContext(MyContext);
@@ -16,6 +17,8 @@ const BookDetails = () => {
   const myBook = context.myBooks.filter((book) => book.id === Number(id))[0];
 
   const [searchValue, setSearchValue] = useState("");
+  const [searchFilter, setSearchFilter] = useState("all");
+  const filterFor = ["all", "quotes", "notes"];
 
   useEffect(() => {
     getNotes(context, navigate, id);
@@ -25,8 +28,13 @@ const BookDetails = () => {
   return (
     <section className="main-container">
       <SearchField
-        action={(event) => setSearchValue(event.target.value)}
+        action={(event) => setSearchValue(event.currentTarget.value)}
         value={searchValue}
+      />
+      {/*//! check function */}
+      <FilterDisplay
+        criteria={filterFor}
+        onChange={(event) => setSearchFilter(event.currentTarget.value)}
       />
       <p>
         <span style={{ fontSize: "24px", fontWeight: "bold" }}>
