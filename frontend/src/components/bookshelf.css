@@ -6,13 +6,13 @@
 .new-book {
   border: none;
   background: none;
-  opacity: .5;
+  opacity: 0.5;
   width: 80%;
 }
 
 .add-btn {
   margin-top: 2rem;
-    background-color: #29ac4a; 
+  background-color: #29ac4a;
   /* f5f1d7 */
   border: 1px solid white;
   border-radius: 1.5rem;
@@ -48,7 +48,7 @@
 }
 
 .book-btn {
-  background-color: #f3d79f; 
+  background-color: #f3d79f;
   /* f5f1d7 */
   border: 1px solid white;
   border-radius: 1.5rem;
@@ -57,7 +57,7 @@
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  padding: .5rem;
+  padding: 0.5rem;
   width: 4rem;
 }
 
@@ -72,6 +72,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   box-sizing: border-box;
+  margin-top: 4rem;
 }
 
 .book-label {
