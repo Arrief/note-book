@@ -28,13 +28,13 @@ const BookDetails = () => {
   return (
     <section className="main-container">
       <SearchField
-        action={(event) => setSearchValue(event.currentTarget.value)}
+        action={(event) => setSearchValue(event.target.value)}
         value={searchValue}
       />
       {/*//! check function */}
       <FilterDisplay
         criteria={filterFor}
-        onChange={(event) => setSearchFilter(event.currentTarget.value)}
+        onChange={(event) => setSearchFilter(event.target.value)}
       />
       <p>
         <span style={{ fontSize: "24px", fontWeight: "bold" }}>

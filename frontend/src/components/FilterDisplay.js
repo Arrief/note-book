@@ -1,9 +1,11 @@
 const FilterDisplay = (props) => (
   <>
-    <label for="filter-display">Filter for:</label>
+    <label htmlFor="filter-display">Filter for:</label>
     <select name="filter-display" id="filter-display">
-      {props.criteria.map((filterOption) => (
-        <option value={filterOption}>{filterOption}</option>
+      {props.criteria.map((filterOption, index) => (
+        <option key={index} value={filterOption}>
+          {filterOption}
+        </option>
       ))}
     </select>
   </>
