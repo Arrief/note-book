@@ -25,6 +25,12 @@ const BookDetails = () => {
     context.setNotesLoaded(true);
   }, [context.reload]);
 
+  // standardize spelling for the category
+  const capitalFirstLetter = (word) =>
+    word.charAt(0).toUpperCase() + word.slice(1);
+
+  const changeSearchFilter = (event) => setSearchFilter(event.target.value);
+
   return (
     <section className="main-container">
       <SearchField
@@ -32,10 +38,7 @@ const BookDetails = () => {
         value={searchValue}
       />
       {/*//! check function */}
-      <FilterDisplay
-        criteria={filterFor}
-        onChange={(event) => setSearchFilter(event.target.value)}
-      />
+      <FilterDisplay criteria={filterFor} onChange={changeSearchFilter} />
       <p>
         <span style={{ fontSize: "24px", fontWeight: "bold" }}>
           {myBook.title}
@@ -49,13 +52,13 @@ const BookDetails = () => {
           context.myNotes.map((note, index) => (
             <div className="note" key={index}>
               <p>"{note.content}"</p>
-              <p>page: {note.page}</p>
+              <p>Page: {note.page}</p>
               {note.link && (
                 <p>
                   link: <a href={note.link}>{note.link}</a>
                 </p>
               )}
-              <p>category: {note.type}</p>
+              <p>Category: {capitalFirstLetter(note.type)}</p>
             </div>
           ))}
       </ul>
