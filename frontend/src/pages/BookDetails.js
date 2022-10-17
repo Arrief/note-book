@@ -17,8 +17,8 @@ const BookDetails = () => {
   const myBook = context.myBooks.filter((book) => book.id === Number(id))[0];
 
   const [searchValue, setSearchValue] = useState("");
-  const [searchFilter, setSearchFilter] = useState("all");
-  const filterFor = ["all", "quotes", "notes"];
+  // list of search filters the user can select
+  const filterFor = ["all", "quote", "note"];
 
   useEffect(() => {
     getNotes(context, navigate, id);
@@ -29,7 +29,23 @@ const BookDetails = () => {
   const capitalFirstLetter = (word) =>
     word.charAt(0).toUpperCase() + word.slice(1);
 
-  const changeSearchFilter = (event) => setSearchFilter(event.target.value);
+  // change the filter criteria
+  const changeSearchFilter = (event) =>
+    context.setSearchFilter(event.target.value);
+
+  // map method to render the notes/quotes
+  const displayNotesQuotes = (note, index) => (
+    <div className="note" key={index}>
+      <p>"{note.content}"</p>
+      <p>Page: {note.page}</p>
+      {note.link && (
+        <p>
+          link: <a href={note.link}>{note.link}</a>
+        </p>
+      )}
+      <p>Category: {capitalFirstLetter(note.type)}</p>
+    </div>
+  );
 
   return (
     <section className="main-container">
@@ -37,8 +53,11 @@ const BookDetails = () => {
         action={(event) => setSearchValue(event.target.value)}
         value={searchValue}
       />
-      {/*//! check function */}
-      <FilterDisplay criteria={filterFor} onChange={changeSearchFilter} />
+      {/* dropdown menu with option which category to display */}
+      <FilterDisplay
+        criteria={filterFor}
+        changeSearchFilter={changeSearchFilter}
+      />
       <p>
         <span style={{ fontSize: "24px", fontWeight: "bold" }}>
           {myBook.title}
@@ -48,19 +67,15 @@ const BookDetails = () => {
         <br />({myBook.category})
       </p>
       <ul>
-        {context.notesLoaded &&
-          context.myNotes.map((note, index) => (
-            <div className="note" key={index}>
-              <p>"{note.content}"</p>
-              <p>Page: {note.page}</p>
-              {note.link && (
-                <p>
-                  link: <a href={note.link}>{note.link}</a>
-                </p>
-              )}
-              <p>Category: {capitalFirstLetter(note.type)}</p>
-            </div>
-          ))}
+        {context.notesLoaded && context.searchFilter === "all"
+          ? // default case, display both notes & quotes
+            context.myNotes.map(displayNotesQuotes)
+          : // filter for either notes or quotes depending on user's choice
+            context.myNotes
+              .filter(
+                (note) => note.type.toLowerCase() === context.searchFilter
+              )
+              .map(displayNotesQuotes)}
       </ul>
       <AddNoteModal bookId={id} />
     </section>

@@ -55,6 +55,9 @@ const ContextProvider = (props) => {
   // state for storing all notes & quotes for a particular book
   const [myNotes, setMyNotes] = useState([]);
 
+  // state to keep track which search filter the user selects
+  const [searchFilter, setSearchFilter] = useState("all");
+
   // state for JWT after successful login
   const [token, setToken] = useState("");
 
@@ -89,6 +92,8 @@ const ContextProvider = (props) => {
         handleNoteDetails,
         myNotes,
         setMyNotes,
+        searchFilter,
+        setSearchFilter,
         token,
         setToken,
         reload,
