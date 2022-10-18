@@ -34,6 +34,7 @@ const AddNoteModal = (props) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  // post a new note/quote to the backend & database, then update the display by triggerin useEffect in BookDetail.js
   const handleNewNote = async (event) => {
     event.preventDefault();
     postNote(context, navigate, props.bookId);

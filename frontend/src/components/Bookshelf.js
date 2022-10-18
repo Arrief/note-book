@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../context/ContextProvider";
 import SearchField from "./SearchField";
+import "./bookshelf.css";
 
 const Bookshelf = () => {
   const context = useContext(MyContext);

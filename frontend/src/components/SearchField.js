@@ -1,6 +1,6 @@
 const SearchField = (props) => (
   <>
-    <label>Search</label>
+    <label>Search:</label>
     <input
       type="text"
       placeholder="Look for..."

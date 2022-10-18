@@ -19,17 +19,59 @@
   padding: 3rem;
 }
 
-@media screen and (max-width: 900px) {
-  .main-container {
-    margin: 3rem 4rem;
-    padding: 1rem;
-  }
-}
-
 .note {
   background-image: url("../assets/paper-white.jpg");
   border: 1px solid var(--black-ink);
   padding: 1rem;
   text-align: left;
   margin: 1rem 0;
+}
+
+.search-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.back-btn {
+  background-color: #e46a3a;
+  /* f5f1d7 */
+  border: 1px solid white;
+  border-radius: 1.5rem;
+  color: var(--black-ink);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  padding: 0.5rem;
+  width: 4rem;
+}
+
+.back-btn:hover {
+  background-color: #ee5114;
+  border: 1px solid var(--black-ink);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .main-container {
+    margin: 3rem 4rem;
+    padding: 1rem;
+  }
+
+  /* for the notes/quotes */
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  .search-filter {
+    flex-direction: column;
+    justify-content: center;
+  }
 }
