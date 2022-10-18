@@ -20,6 +20,7 @@ const BookDetails = () => {
   // list of search filters the user can select
   const filterFor = ["all", "quote", "note"];
 
+  // fetch all notes/quotes from the database & refresh once user submits new via AddNoteModal
   useEffect(() => {
     getNotes(context, navigate, id);
     context.setNotesLoaded(true);
@@ -49,15 +50,20 @@ const BookDetails = () => {
 
   return (
     <section className="main-container">
-      <SearchField
-        action={(event) => setSearchValue(event.target.value)}
-        value={searchValue}
-      />
-      {/* dropdown menu with option which category to display */}
-      <FilterDisplay
-        criteria={filterFor}
-        changeSearchFilter={changeSearchFilter}
-      />
+      <section className="search-filter">
+        <button className="back-btn" onClick={() => navigate("/my-books")}>
+          Back
+        </button>
+        <SearchField
+          action={(event) => setSearchValue(event.target.value.toLowerCase())}
+          value={searchValue}
+        />
+        {/* dropdown menu with option which category to display */}
+        <FilterDisplay
+          criteria={filterFor}
+          changeSearchFilter={changeSearchFilter}
+        />
+      </section>
       <p>
         <span style={{ fontSize: "24px", fontWeight: "bold" }}>
           {myBook.title}
@@ -68,12 +74,18 @@ const BookDetails = () => {
       </p>
       <ul>
         {context.notesLoaded && context.searchFilter === "all"
-          ? // default case, display both notes & quotes
-            context.myNotes.map(displayNotesQuotes)
-          : // filter for either notes or quotes depending on user's choice
+          ? // default case, display both notes & quotes and filter for search word
+            context.myNotes
+              .filter((note) =>
+                note.content.toLowerCase().includes(searchValue)
+              )
+              .map(displayNotesQuotes)
+          : // filter for either notes or quotes depending on user's choice and additionaly for search word
             context.myNotes
               .filter(
-                (note) => note.type.toLowerCase() === context.searchFilter
+                (note) =>
+                  note.type.toLowerCase() === context.searchFilter &&
+                  note.content.toLowerCase().includes(searchValue)
               )
               .map(displayNotesQuotes)}
       </ul>
