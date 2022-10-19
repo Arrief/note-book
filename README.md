@@ -13,9 +13,9 @@ _Note Book_ is a web application for those who like to read a lot and take a lot
 - Search tool to find specific book titles or text passages with keywords
 - Filter option to choose if only notes or quotes should be displayed
 
-<img src="./frontend/public/screenshots/screenshot-books.png" width="800" height="400" alt="screenshot-books">
-<img src="./frontend/public/screenshots/screenshot-note.png" width="800" height="400" alt="screenshot-note">
-<img src="./frontend/public/screenshots/screenshot-filter.png" width="800" height="400" alt="screenshot-filter">
+<img src="./frontend/public/screenshots/screenshot-books.png" width="800" height="400" alt="screenshot-books" />
+<img src="./frontend/public/screenshots/screenshot-note.png" width="800" height="400" alt="screenshot-note" />
+<img src="./frontend/public/screenshots/screenshots-filter.png" width="800" height="400" alt="screenshot-filter" />
 
 ## Installation
 
