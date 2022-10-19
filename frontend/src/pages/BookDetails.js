@@ -41,7 +41,10 @@ const BookDetails = () => {
       <p>Page: {note.page}</p>
       {note.link && (
         <p>
-          link: <a href={note.link}>{note.link}</a>
+          Link:{" "}
+          <a href={note.link} target="_blank" rel="noreferrer">
+            {note.link}
+          </a>
         </p>
       )}
       <p>Category: {capitalFirstLetter(note.type)}</p>

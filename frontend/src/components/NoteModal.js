@@ -59,7 +59,7 @@ const AddNoteModal = (props) => {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <form className="new-book" onSubmit={handleNewNote}>
+            <form className="new-book new-note" onSubmit={handleNewNote}>
               <textarea
                 placeholder="Start typing!"
                 id="textarea-note"

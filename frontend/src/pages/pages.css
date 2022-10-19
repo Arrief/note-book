@@ -27,6 +27,17 @@
   margin: 1rem 0;
 }
 
+.note a {
+  color: green;
+  text-decoration: none;
+}
+
+.note a:hover {
+  color: rgb(10, 85, 10);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .search-filter {
   display: flex;
   align-items: center;

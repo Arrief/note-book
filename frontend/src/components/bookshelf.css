@@ -6,8 +6,11 @@
 .new-book {
   border: none;
   background: none;
-  opacity: 0.5;
   width: 80%;
+}
+
+.new-note {
+  opacity: 0.8;
 }
 
 .add-btn {
