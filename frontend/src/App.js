@@ -9,7 +9,7 @@ import Register from "./pages/Register";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />
@@ -19,7 +19,7 @@ function App() {
         <Route path="/my-books/:id" element={<BookDetails />} />
         <Route path="/error" element={<ErrorPage />} />
       </Routes>
-    </div>
+    </>
   );
 }
 

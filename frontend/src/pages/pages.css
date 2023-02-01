@@ -1,6 +1,6 @@
 .btn-group {
   display: flex;
-  gap: 1rem;
+  gap: var(--gap-small);
   justify-content: center;
   align-items: center;
   margin-top: 3rem;
@@ -15,25 +15,28 @@
   justify-content: center;
   align-items: center;
   border: 2px solid var(--black-ink);
-  margin: 3rem 20rem;
+  margin: 3rem auto;
   padding: 3rem;
+  width: 60%;
 }
 
 .note {
   background-image: url("../assets/paper-white.jpg");
-  border: 1px solid var(--black-ink);
+  border: 2px solid var(--black-ink);
+  border-radius: 5px;
   padding: 1rem;
   text-align: left;
   margin: 1rem 0;
+  width: 90%;
 }
 
 .note a {
-  color: green;
+  color: var(--add-note);
   text-decoration: none;
 }
 
 .note a:hover {
-  color: rgb(10, 85, 10);
+  color: var(--add-note-hover);
   cursor: pointer;
   text-decoration: underline;
 }
@@ -42,15 +45,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--gap-small);
   margin-bottom: 1rem;
 }
 
 .back-btn {
-  background-color: #e46a3a;
+  background-color: var(--back-btn);
   /* f5f1d7 */
-  border: 1px solid white;
-  border-radius: 1.5rem;
+  border: 1px solid var(--back-btn-hover);
+  border-radius: var(--radius-standard);
   color: var(--black-ink);
   display: flex;
   justify-content: center;
@@ -61,15 +64,20 @@
 }
 
 .back-btn:hover {
-  background-color: #ee5114;
+  background-color: var(--back-btn-hover);
   border: 1px solid var(--black-ink);
   cursor: pointer;
 }
 
 @media screen and (max-width: 900px) {
   .main-container {
-    margin: 3rem 4rem;
     padding: 1rem;
+    height: 100%;
+    width: 80%;
+  }
+
+  .note {
+    padding: 1rem 0.2rem;
   }
 
   /* for the notes/quotes */

@@ -23,7 +23,7 @@ const MyBooks = () => {
     <section className="main-container">
       {context.booksLoaded ? (
         <>
-          <h1>{userName}'s bookshelf:</h1>
+          <h1 className="username">{userName}'s bookshelf:</h1>
           {context.myBooks.length > 0 ? (
             <Bookshelf />
           ) : (

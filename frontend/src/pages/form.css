@@ -1,0 +1,32 @@
+form {
+  background-image: url("https://t4.ftcdn.net/jpg/01/42/71/29/360_F_142712953_1XMycIzw6DswM6in91CnDYt3Ruk0c0QU.webp");
+  border: 2px solid var(--black-ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-big);
+  padding: 1rem;
+}
+
+input {
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: 2px;
+  box-shadow: 0.1rem 0.1rem var(--strong-shadow);
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+input:focus {
+  border-bottom: 3px solid var(--strong-border);
+  box-shadow: none;
+  outline: none;
+}
+
+@media screen and (max-width: 900px) {
+  input {
+    padding: 0;
+    width: 95%;
+  }
+}

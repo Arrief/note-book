@@ -19,7 +19,7 @@ const Navbar = () => {
     <nav id="navbar">
       <section id="nav-title" onClick={() => navigate("/")}>
         <img src={logo} alt="Note Book logo" id="nav-logo" />
-        <p>Note Book</p>
+        <h1>Note Book</h1>
       </section>
       <section id="nav-buttons">
         {!context.userData.userId ? (
@@ -36,7 +36,7 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <p>Hi, {context.userData.userName}!</p>{" "}
+            <p className="greet-user">Hi, {context.userData.userName}!</p>{" "}
             <button className="better-btn" onClick={handleLogout}>
               Logout
             </button>

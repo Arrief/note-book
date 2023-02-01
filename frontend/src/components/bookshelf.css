@@ -1,6 +1,12 @@
 #textarea-note {
-  width: 31rem;
+  border: 3px solid transparent;
   height: 20rem;
+  outline: none;
+  width: 31rem;
+}
+
+#textarea-note:focus {
+  border: 3px solid var(--strong-shadow);
 }
 
 .new-book {
@@ -11,25 +17,27 @@
 
 .new-note {
   opacity: 0.8;
+  height: 100%;
 }
 
 .add-btn {
   margin-top: 2rem;
-  background-color: #29ac4a;
+  background-color: var(--add-book);
   /* f5f1d7 */
-  border: 1px solid white;
-  border-radius: 1.5rem;
+  border: 1px solid var(--add-book-hover);
+  border-radius: var(--radius-standard);
   color: var(--black-ink);
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   padding: 1rem;
+  white-space: nowrap;
   width: 7rem;
 }
 
 .add-btn:hover {
-  background-color: #199219;
+  background-color: var(--add-book-hover);
   border: 1px solid var(--black-ink);
   cursor: pointer;
 }
@@ -37,13 +45,20 @@
 .book {
   background-image: url("../assets/book-background.jpg");
   background-position: center;
+  border: 2px solid var(--black-ink);
+  box-shadow: 1rem 1rem 3.5rem var(--black-ink);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 140px;
   height: 12rem;
+  max-width: 140px;
   padding: 2rem;
+  transition: transform 0.3s;
+}
+
+.book:hover {
+  transform: translateY(-0.5rem) scale(1.1);
 }
 
 .book > p {
@@ -51,10 +66,10 @@
 }
 
 .book-btn {
-  background-color: #f3d79f;
+  background-color: var(--book-btn);
   /* f5f1d7 */
-  border: 1px solid white;
-  border-radius: 1.5rem;
+  border: 1px solid var(--book-btn-hover);
+  border-radius: var(--radius-standard);
   color: var(--black-ink);
   display: flex;
   justify-content: center;
@@ -65,7 +80,7 @@
 }
 
 .book-btn:hover {
-  background-color: #eec85e;
+  background-color: var(--book-btn-hover);
   border: 1px solid var(--black-ink);
   cursor: pointer;
 }
@@ -73,7 +88,7 @@
 .bookshelf {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: var(--gap-big);
   box-sizing: border-box;
   margin-top: 4rem;
 }
@@ -83,9 +98,20 @@
   height: 70%;
 }
 
+.username {
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 1400px) {
+  .bookshelf {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap-small);
+  }
+}
+
 @media screen and (max-width: 900px) {
   #textarea-note {
-    width: 18rem;
+    width: 16rem;
   }
 
   .bookshelf {

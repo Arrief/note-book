@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 
 const style = {
   backgroundImage: `url(${bookCollection})`,
+  border: "2px solid #000",
+  boxShadow: 24,
   position: "absolute",
   top: "50%",
   left: "50%",
@@ -18,10 +20,9 @@ const style = {
   alignItems: "center",
   justifyContent: "center",
   transform: "translate(-50%, -50%)",
-  width: "40rem",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 10,
+  height: { xs: "90vh", md: "auto" },
+  width: { xs: "15rem", md: "40rem" },
+  p: { xs: 2, md: 10 },
 };
 
 const AddBookModal = () => {

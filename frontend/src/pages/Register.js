@@ -4,7 +4,7 @@ import { MyContext } from "../context/ContextProvider";
 // axios post request to backend register route
 import postRegister from "../functions/postRegister";
 import MyBooks from "./MyBooks";
-import "./reglog.css";
+import "./form.css";
 
 const Register = () => {
   const context = useContext(MyContext);

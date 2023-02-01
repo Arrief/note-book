@@ -2,10 +2,10 @@
   background-image: url("../assets/paper-cream.png");
   /* background-color: #f0dda8; */
   /* background: linear-gradient(90deg, rgba(240,221,168,1) 25%, rgba(222,184,135,1) 100%); */
-  border: 5px outset burlywood;
+  border: 5px outset var(--strong-border);
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   margin-bottom: 4rem;
   padding: 1rem 0;
   width: auto;
@@ -27,14 +27,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: var(--gap-small);
   font-weight: bold;
   font-size: 26px;
   width: 20%;
 }
 
+#nav-title > h1 {
+  padding: 0;
+  margin: 0;
+}
+
 #nav-title:hover {
   cursor: pointer;
+}
+
+.greet-user {
+  font-weight: bold;
 }
 
 @media screen and (max-width: 900px) {
@@ -46,7 +55,7 @@
     margin-right: 1rem;
   }
 
-  #nav-title > p {
+  #nav-title > h1 {
     display: none;
   }
 

@@ -1,47 +1,58 @@
 :root {
+  /* color variables */
+  --add-book: #29ac4a;
+  --add-book-hover: #199219;
+  --add-note: green;
+  --add-note-hover: #0a550a;
+  --back-btn: #e46a3a;
+  --back-btn-hover: #ee5114;
   --black-ink: #242321;
+  --book-btn: #f3d79f;
+  --book-btn-hover: #eec85e;
+  --soft-shadow: #ede1ca;
+  --strong-shadow: #c9b999;
+  --strong-border: burlywood;
+
+  /* layout variables */
+  --gap-big: 2rem;
+  --gap-small: 1rem;
+  --radius-standard: 1.5rem;
 }
 
 body {
-  background-image: url("https://img.freepik.com/free-photo/flat-lay-desk-arrangement-with-copy-space_23-2148928165.jpg?w=2000");
+  background-image: url("assets/desk.jpg");
   background-repeat: no-repeat;
-  margin: 0;
+  background-size: cover;
   font-family: "Edu SA Beginner", cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 22px;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-.App {
+  margin: 0;
+  min-height: 1000px;
   text-align: center;
 }
 
 .better-btn {
-  background-color: #ede1ca;
+  background-color: var(--soft-shadow);
   /* f5f1d7 */
-  border: 1px solid white;
-  border-radius: 1.5rem;
+  border: 1px solid var(--strong-shadow);
+  border-radius: var(--radius-standard);
   color: var(--black-ink);
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  padding: 1rem;
+  padding: 0.8rem;
   width: 7rem;
 }
 
 .better-btn:hover {
-  background-color: #c9b999;
+  background-color: var(--strong-shadow);
   border: 1px solid var(--black-ink);
   cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .better-btn {
     width: 5rem;
   }

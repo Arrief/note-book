@@ -18,7 +18,9 @@ const Bookshelf = () => {
 
   return (
     <>
-      <SearchField action={updateSearchValue} value={searchValue} />
+      <div className="search-filter">
+        <SearchField action={updateSearchValue} value={searchValue} />
+      </div>
       <section className="bookshelf">
         {/* display all books by default or apply filter from user search */}
         {context.myBooks.filter(compareInputToBookTitle).map((book, index) => (

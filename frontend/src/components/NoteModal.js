@@ -21,10 +21,11 @@ const style = {
   alignItems: "center",
   justifyContent: "center",
   transform: "translate(-50%, -50%)",
-  width: { xs: "10rem", md: "40rem" },
+  height: { xs: "90vh", md: "auto" },
+  width: { xs: "15rem", md: "40rem" },
   border: "2px solid #000",
   boxShadow: 24,
-  p: 10,
+  p: { xs: 2, md: 10 },
 };
 
 const AddNoteModal = (props) => {
