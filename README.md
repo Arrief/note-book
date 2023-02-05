@@ -2,7 +2,7 @@
 
 <img src="./frontend/public/screenshots/screenshot-welcome.png" alt="Welcome to Note Book" />
 
-## <a href="https://note-book.netlify.app/" target="_blank">Live Demo ▶</a>
+## <a href="https://the-note-book.netlify.app/" target="_blank">Live Demo ▶</a>
 
 ## Table of Contents
 
