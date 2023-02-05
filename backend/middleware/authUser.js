@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 // middleware to check if user has valid JWT
 const authenticateUser = (req, res, next) => {
   const authHeader = req.headers.authorization;
-  // authHeader = string, [0] = "Bearer", [1] = token itself
+  // authHeader = a string, when split: [0] = "Bearer", [1] = token itself
   const token = authHeader && authHeader.split(" ")[1];
   if (token === undefined) return res.sendStatus(401);
   // else: verify token

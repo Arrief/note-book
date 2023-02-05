@@ -3,7 +3,7 @@ import axios from "axios";
 // axios get request to backend books route to get a list of all of the user's books
 const getBooks = (token, context, navigate) =>
   axios({
-    url: "http://localhost:5000/user/books",
+    url: `${process.env.NOTE_BOOK_BACKEND_URL}/user/books`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -18,4 +18,5 @@ const getBooks = (token, context, navigate) =>
       console.error(error);
       navigate("/error");
     });
+
 export default getBooks;

@@ -9,6 +9,7 @@ import postNewBook from "../functions/postNewBook";
 import bookCollection from "../assets/book-collection.jpeg";
 import { useNavigate } from "react-router-dom";
 
+// MaterialUI custom style for <Box /> component
 const style = {
   backgroundImage: `url(${bookCollection})`,
   border: "2px solid #000",
@@ -25,6 +26,7 @@ const style = {
   p: { xs: 2, md: 10 },
 };
 
+// Modal controls
 const AddBookModal = () => {
   const context = useContext(MyContext);
   const navigate = useNavigate();
@@ -32,6 +34,7 @@ const AddBookModal = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  // post a new book to the backend & database, then update the display by triggering useEffect in MyBooks.js
   const handleNewBook = async (event) => {
     event.preventDefault();
     postNewBook(context, navigate);

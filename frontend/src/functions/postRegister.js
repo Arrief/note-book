@@ -4,7 +4,7 @@ import axios from "axios";
 const postRegister = (context, navigate) =>
   axios({
     method: "post",
-    url: "http://localhost:5000/user/register",
+    url: `${process.env.NOTE_BOOK_BACKEND_URL}/user/register`,
     data: context.userData,
   })
     .then((response) => {

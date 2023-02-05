@@ -9,6 +9,7 @@ import notes from "../assets/notes.jpeg";
 import { useNavigate } from "react-router-dom";
 import postNote from "../functions/postNote";
 
+// MaterialUI custom style for <Box /> component
 const style = {
   backgroundImage: `url(${notes})`,
   backgroundRepeat: "no-repeat",
@@ -28,6 +29,7 @@ const style = {
   p: { xs: 2, md: 10 },
 };
 
+// Modal controls
 const AddNoteModal = (props) => {
   const context = useContext(MyContext);
   const navigate = useNavigate();
@@ -35,7 +37,7 @@ const AddNoteModal = (props) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // post a new note/quote to the backend & database, then update the display by triggerin useEffect in BookDetail.js
+  // post a new note/quote to the backend & database, then update the display by triggering useEffect in BookDetail.js
   const handleNewNote = async (event) => {
     event.preventDefault();
     postNote(context, navigate, props.bookId);

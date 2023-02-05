@@ -4,7 +4,7 @@ import axios from "axios";
 const postLogin = (context, navigate) =>
   axios({
     method: "post",
-    url: "http://localhost:5000/user/login",
+    url: `${process.env.NOTE_BOOK_BACKEND_URL}/user/login`,
     data: context.userData,
   })
     .then((response) => {
