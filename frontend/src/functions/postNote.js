@@ -5,7 +5,7 @@ import Alert from "@mui/material/Alert";
 const postNote = (context, navigate, bookId) =>
   axios({
     method: "post",
-    url: `${process.env.NOTE_BOOK_BACKEND_URL}/user/books/notes`,
+    url: `${process.env.REACT_APP_BACKEND_URL}/user/books/notes`,
     data: {
       bookId,
       newNote: context.noteDetails,
