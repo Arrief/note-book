@@ -4,7 +4,7 @@ import axios from "axios";
 const postLogin = (context, navigate) =>
   axios({
     method: "post",
-    url: `${process.env.REACT_APP_BACKEND_URL}/user/login`,
+    url: `${import.meta.env.VITE_APP_BACKEND_URL}/user/login`,
     data: context.userData,
   })
     .then((response) => {

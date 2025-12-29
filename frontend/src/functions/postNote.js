@@ -1,11 +1,10 @@
 import axios from "axios";
-import Alert from "@mui/material/Alert";
 
 // axios post request to insert a new note into the database
 const postNote = (context, navigate, bookId) =>
   axios({
     method: "post",
-    url: `${process.env.REACT_APP_BACKEND_URL}/user/books/notes`,
+    url: `${import.meta.env.VITE_APP_BACKEND_URL}/user/books/notes`,
     data: {
       bookId,
       newNote: context.noteDetails,
@@ -15,9 +14,7 @@ const postNote = (context, navigate, bookId) =>
       if (response.status === 201) {
         context.setNoteDetails({ content: "", page: "", link: "", type: "" });
         // notification for the user
-        <Alert onClose={() => {}} severity="success">
-          {alert("You added a new note for this book!")}
-        </Alert>;
+        alert("You added a new note for this book!");
       }
     })
     .catch((error) => {

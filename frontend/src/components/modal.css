@@ -1,0 +1,66 @@
+.dialog-modal {
+  border: 2px solid #000;
+  border-radius: 0;
+  max-width: none;
+  max-height: none;
+  padding: 0;
+}
+
+.dialog-modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+}
+
+.modal-content {
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),
+              0px 24px 38px 3px rgba(0,0,0,0.14),
+              0px 9px 46px 8px rgba(0,0,0,0.12);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem;
+  position: relative;
+  height: 90vh;
+  width: 15rem;
+}
+
+@media (min-width: 768px) {
+  .modal-content {
+    height: auto;
+    width: 40rem;
+    padding: 5rem;
+  }
+}
+
+.note-dialog {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-height: 80vh;
+}
+
+.close-button {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 2rem;
+
+  display: flex;
+  justify-content: center;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  line-height: 1;
+  height: 40px;
+  width: 40px;
+  transition: background-color 0.2s;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 1);
+}

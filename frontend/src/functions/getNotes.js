@@ -3,7 +3,7 @@ import axios from "axios";
 // axios get request for a list of all notes for a specific book
 const getNotes = (context, navigate, id) => {
   axios({
-    url: `${process.env.REACT_APP_BACKEND_URL}/user/books/${id}`,
+    url: `${import.meta.env.VITE_APP_BACKEND_URL}/user/books/${id}`,
   })
     .then((response) => {
       console.log(response);
