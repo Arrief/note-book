@@ -1,0 +1,46 @@
+services:
+    db:
+        image: mysql:8.0
+        container_name: notebook-db
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: rootPassword123
+            MYSQL_DATABASE: note_book_db
+            MYSQL_USER: data_wrangler
+            MYSQL_PASSWORD: wranglerPassword123
+        ports:
+            - "3307:3306"
+        volumes:
+            - db_data:/var/lib/mysql
+            - ./note_book.sql:/docker-entrypoint-initdb.d/init.sql:ro
+        healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+            interval: 5s
+            timeout: 5s
+            retries: 10
+
+    backend:
+        build: ./backend
+        container_name: notebook-backend
+        restart: unless-stopped
+        env_file:
+            - ./backend/.env.docker
+        ports:
+            - "3000:3000"
+        depends_on:
+            db:
+                condition: service_healthy
+
+    frontend:
+        build: ./frontend
+        container_name: notebook-frontend
+        restart: unless-stopped
+        env_file:
+            - ./frontend/.env.docker
+        ports:
+            - "5173:5173"
+        depends_on:
+            - backend
+
+volumes:
+    db_data:

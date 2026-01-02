@@ -2,48 +2,92 @@
 
 <img src="./frontend/public/screenshots/screenshot-welcome.png" alt="Welcome to Note Book" />
 
-## <a href="https://the-note-book.netlify.app/" target="_blank">Live Demo ▶</a>
-
 ## Table of Contents
 
-1. [Live demo](#-live-demo)
-2. [Introduction](#-introduction)
-3. [Features](#-features)
-4. [Installation](#-installing-note-book-locally)
-5. [Development info](#-development-info)
-6. [Created with](#-created-with)
+1. [Introduction](#-introduction)
+2. [Features](#-features)
+3. [Installation](#-installation)
+4. [Development info](#-development-info)
+5. [Created with](#-created-with)
 
 ## Introduction
 
-**Note Book** is a web application for those who like to read a lot and take a lot of notes. Instead of having to skim through the pages of notepads or the books themselves to find that one quotation that you marked down _somewhere_, Note Book allows you to add all your books to a digital collection. From there you can take as many notes for each book as you like, write down your favorite quotes from it and keep everything neatly in one place.
+**Note Book** is a web application for those who like to read a lot and take a lot of notes. Instead of having to skim through the pages of hand-written notepads or the books themselves to find that one quotation that you marked down _somewhere_, Note Book allows you to add all your books to a digital collection. From there you can take as many notes for each book as you like, write down your favorite quotes from it and keep everything neatly in one place.
 
 You can also easily search for specific book titles, keywords or text passages and filter between notes and quotes, no matter how big your collection of books grows or how extensive your notes are. Sign up for a free account and browse your book and note collection on your PC, tablet or phone. Let's get reading!
 
 ## Features
 
-- Sign up for a free user account
-- Add all your books to your personal digital collection
-- Access all of your notes & quotations on each book
-- Include external links in your notes
-- Search tool to find specific book titles or text passages with keywords
-- Filter option to choose if only notes or quotes should be displayed
-- Fully responsive for a great user experience on desktop, laptop, tablet and mobile devices.
+-   Sign up for a free user account
+-   Add all your books to your personal digital collection
+-   Access all of your notes & quotations on each book
+-   Include external links in your notes
+-   Search tool to find specific book titles or text passages with keywords
+-   Filter option to choose if only notes or quotes should be displayed
+-   Fully responsive for a great user experience on desktop, laptop, tablet and mobile devices.
 
 <img src="./frontend/public/screenshots/screenshot-books.png" alt="Collection of books" />
 <img src="./frontend/public/screenshots/screenshot-note.png" alt="Taking a note" />
 <img src="./frontend/public/screenshots/screenshot-filter.png" alt="Filtering for a quote" />
 
-## Installing Note Book locally
+## Installation
 
-After cloning this repository from Github, use the terminal to cd into the cloned parent folder, then run `npm install` inside **both** the /frontend and /backend folders each.
+First you need to clone this repository from Github and then move into the parent directory by running the following commands in your terminal:
 
-Create a new MySQL database and import the `note-book.sql` file (or copy & paste its content into the new database manually) in order to have the required tables.
+```bash
+git clone https://github.com/Arrief/note-book.git
+cd note-book
+```
 
-In the /backend directory, rename the **.env.sample** file to just **.env** and replace the placeholder values inside with your actual MySQL data and credentials. Additionally uncomment and comment out/delete the respective lines marked in `config.js`.
+From there, you have two options to run Note Book on your machine.
 
-Similarly rename the **env.sample file in the /frontend directory** to simply .env, this time only changing its content if you prefer to have your backend running on another port than the default port 5000.
+### 1. Docker (recommended)
 
-Lastly, run `npm start`, again in both the /frontend and /backend folders and keep both terminal tabs/windows open and running while using the application locally.
+**Prerequisites**: you need to have _Docker_ with _Docker Compose_ installed. Confirm by running `docker -v` and `docker-compose -v` in your terminal.
+
+In order to start the application, simply run the following command in your terminal:
+
+```bash
+docker compose up --build
+```
+
+The application can then be accessed on `http://localhost:5173/`. Once you are finished run `docker compose down` to keep your data within the app or `docker compose down -v` to erase the Docker volume/database.
+
+### 2. Manual setup
+
+**Prerequisites**: you need to have _npm_ and _MySQL_ or _MariaDB_ installed. Confirm by running `npm -v` and `mysql --version` in your terminal.
+
+Assuming you already set up your MySQL/MariaDB, log in and create a database for the app (and optionally a new user):
+
+```sql
+mysql
+CREATE DATABASE note_book_db;
+```
+
+Now you can import the `note-book.sql` dump file in order to have the required tables (alternatively you could also copy & paste the table creation statements from the dump file manually into the new database). For the import, exit your database and simply run the following terminal command from the root directory of the app:
+
+```bash
+mysql -u your_username -p note_book_db < note_book.sql
+```
+
+Next, in the `backend` directory, rename the file **.env.sample** to just **.env**, open the file in a text editor or IDE of your choice and replace the placeholder values inside with your actual MySQL data and credentials (additionally uncomment and comment out/delete the respective lines marked in `config.js` if you want to connect to a remotely hosted database instead).
+
+Similarly rename the **env.sample file in the frontend directory** to simply .env, but this time only change its content if you prefer to have your backend running on another port than the default port 3000 (if you change it, remember to change the PORT environment variable in `backend/.env` too!).
+
+Finally you need to install the required node modules/npm dependencies for **both** the frontend and backend before you are ready to launch both with their `npm start` scripts. Still from the project's root directory, open up a second terminal tab and run:
+
+```bash
+# Terminal tab 1
+cd frontend
+npm install
+npm start
+# Terminal tab 2
+cd backend
+npm install
+npm start
+```
+
+Keep both terminal tabs/windows open and running while using the application locally. Now you can visit `http://localhost:5173/` to interact with the application.
 
 ## Development info
 
@@ -55,11 +99,11 @@ To this end, the frontend sends several **axios** requests for individual user d
 
 Context also receives and stores the book collection and all corresponding notes/quotes. Getting this data is triggered not by user input but with the **useEffect hook**, which takes care of the functions for the axios calls and the re-rendering of content when the respective page loads. Determining the data request for the notes on each individual book is done by making use of the dynamic URL parameters with React Router's **useParams hook**.
 
-Almost all styling is done with CSS, utilizing **flexbox, grid and animations** as well as **media queries** to ensure **responsive behavior**. The only exceptions are the modals which appear when adding a new book and new note/quote. Their functionality to open and close as well as their design is achieved with MaterialUI/MUI.
+All styling is done with native CSS, utilizing **flexbox, grid and animations** as well as **media queries** to ensure **responsive behavior**. Originally the modals which appear when adding a new book and new note/quote were implemented with MaterialUI/MUI. With full browser support for the native HTML `<dialog>` element, the MUI modal and therefore MUI as a whole have become unnecessary for this application and have since been removed.
 
 ### Backend
 
-For handling the transfer of data from the frontend to the database I have developed a **REST API** with **Node.js** and **Express.js**.
+For handling the transfer of data from the frontend to the database and vice versa I have developed a **REST API** with **Node.js** and **Express.js**.
 
 Different routes handle the different kinds of requests coming from the frontend with respective **controller functions**. These asynchronous functions receive the data from the frontend requests in the form of objects, whose values are then used to transmit **create, read and update** operations on the database.
 
@@ -71,14 +115,14 @@ All data is stored in a **MySQL database** whose three **relational tables** con
 
 ## Created with
 
-- React v18.2.0
-- React Router v6
-- JavaScript
-- Node.js
-- Express.js
-- MySQL
-- HTML & CSS
-- MaterialUI (MUI)
+-   React
+-   React Router
+-   JavaScript
+-   Node.js
+-   Express.js
+-   MySQL
+-   HTML & CSS
+-   ~MaterialUI (MUI)~
 
 <details>
   <summary><h2 style="display: inline-block">Image sources</h2></summary>

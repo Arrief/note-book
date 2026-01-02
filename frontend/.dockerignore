@@ -1,0 +1,10 @@
+**/.env
+**/.git
+**/.gitignore
+**/Dockerfile*
+**/node_modules
+**/npm-debug.log
+**/build
+**/dist
+LICENSE
+README.md
